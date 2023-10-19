@@ -6,7 +6,7 @@ import TodoFilter from "./components/TodoFilter";
 import TodoList from "./components/TodoList";
 
 const initialStateTodos = [
-  { id: 1, title: "Go to the gym", completed: false },
+  { id: 1, title: "Go to the gym", completed: true },
   { id: 2, title: "10 minutes of meditation", completed: false },
   { id: 3, title: "Pick up groceries", completed: false },
   { id: 4, title: "Complete todo app on frontend", completed: false },
@@ -23,7 +23,11 @@ const App = () => {
     };
 
     setTodos([...todos, newTodo]);
-  })
+  });
+
+  const removeTodo = (id) => {
+    setTodos(todos.filter(todo => todo.id !== id))
+  }
 
   return (
     <>
@@ -33,7 +37,7 @@ const App = () => {
         <main className="container x-auto px-4 mt-8">
           <TodoCreate createTodo={createTodo} />
 
-          <TodoList todos={todos} />
+          <TodoList todos={todos} removeTodo={removeTodo} />
 
           <TodoComputed />
 
