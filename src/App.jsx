@@ -17,7 +17,7 @@ const App = () => {
 
   const createTodo = (title => {
     const newTodo = {
-      id: Date.now,
+      id: new Date().getMilliseconds(),
       title,
       completed: false,
     };
@@ -25,9 +25,17 @@ const App = () => {
     setTodos([...todos, newTodo]);
   });
 
+  const updateTodo = (id) => {
+    setTodos(todos.map(todo => todo.id === id
+      ? {...todo, completed: !todo.completed}
+      : todo));
+  };
+
   const removeTodo = (id) => {
     setTodos(todos.filter(todo => todo.id !== id))
   }
+
+  const todoComputedFilter = todos.filter(todo => !todo.completed).length;
 
   return (
     <>
@@ -37,9 +45,9 @@ const App = () => {
         <main className="container x-auto px-4 mt-8">
           <TodoCreate createTodo={createTodo} />
 
-          <TodoList todos={todos} removeTodo={removeTodo} />
+          <TodoList todos={todos} updateTodo={updateTodo} removeTodo={removeTodo} />
 
-          <TodoComputed />
+          <TodoComputed todoCount={todoComputedFilter} />
 
           <TodoFilter />
         </main>

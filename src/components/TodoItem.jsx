@@ -1,7 +1,7 @@
 import CrossIcon from "./icons/CrossIcon";
 import Iconcheck from "./icons/Iconcheck";
 
-const TodoItem = ({ todo, removeTodo }) => {
+const TodoItem = ({ todo, updateTodo, removeTodo }) => {
     const { id, title, completed } = todo;
 
     return (
@@ -12,7 +12,8 @@ const TodoItem = ({ todo, removeTodo }) => {
                         ? `flex flex-none bg-gradient-to-r from-indigo-500
                              via-purple-500 to-pink-500 justify-center items-center` 
                         : "inline-block"}`
-                    }                
+                    }  
+                onClick={() => updateTodo(id)}              
             >
                 {
                     completed && <Iconcheck />
