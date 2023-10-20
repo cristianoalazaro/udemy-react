@@ -1,4 +1,4 @@
-const IconCheck = ({ ...props }) => {
+const CheckIcon = ({ ...props }) => {
     return (
         <svg 
             xmlns="http://www.w3.org/2000/svg" 
@@ -14,4 +14,4 @@ const IconCheck = ({ ...props }) => {
     )
 };
 
-export default IconCheck;
+export default CheckIcon;
